@@ -45,7 +45,7 @@ const orderSchema = new mongoose.Schema({
     longitude: { type: Number, required: true },
     address: { type: String },
   },
-  deliveryPersonalLocation: {
+  deliveryPersonLocation: {
     latitude: { type: Number, required: true },
     longitude: { type: Number, required: true },
     address: { type: String },
