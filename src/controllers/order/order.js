@@ -60,6 +60,7 @@ export const confirmOrder = async (req, reply) => {
       longitude: deliveryPersonLocation.longitude,
       address: deliveryPersonLocation.address || "No address available!",
     };
+    req.server.io.to(orderId).emit("Order confirmed", order);
     await order.save();
     return reply.status(200).send(order);
   } catch (error) {
@@ -92,6 +93,7 @@ export const updateOrderStatus = async (req, reply) => {
     order.deliveryPerson = userId;
     order.deliveryPersonLocation = deliveryPersonLocation;
     await order.save();
+    req.server.io.to(orderId).emit("Live tracking updates", order);
     return reply.status(200).send(order);
   } catch (error) {
     return reply.status(500).send({ message: "Error Update order", error });
