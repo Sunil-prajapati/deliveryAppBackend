@@ -25,8 +25,8 @@ export const createOrder = async (req, reply) => {
         address: customerData.address || "No address available!",
       },
       pickupLocation: {
-        latitude: branchData.location.latitude,
-        longitude: branchData.location.longitude,
+        latitude: branchData.liveLocation.latitude,
+        longitude: branchData.liveLocation.longitude,
         address: branchData.address || "No address available!",
       },
     });
